@@ -1,4 +1,7 @@
-﻿namespace Demo.Modelos
+﻿// Ctrl+K Ctrl+0 para recolher todos os blocos de código
+// Ctrl+K Ctrl+J para abrir todos os blocos de código
+
+namespace Demo.Modelos
 {
     /// <summary>
     /// Define uma Conta Corrente de um banco.
@@ -104,9 +107,16 @@
             contaDestino.Depositar(valor);
         }
 
-        public override string ToString()
+        public override bool Equals(object? obj)
         {
-            return $"Número {Numero}, Agência {Agencia}, Saldo {Saldo}";
+            var outraConta = obj as ContaCorrente;
+
+            if (outraConta == null)
+            {
+                return false;
+            }
+
+            return Numero == outraConta.Numero && Agencia == outraConta.Agencia;
         }
     }
 }

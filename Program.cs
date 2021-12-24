@@ -1,4 +1,6 @@
-﻿namespace Demo.RedefinirTamanhoArray
+﻿using Demo.Modelos;
+
+namespace Demo.RedefinirTamanhoArray
 {
     class Program
     {
@@ -9,12 +11,18 @@
             lista.Adicionar(new ContaCorrente(874, 5678392));
             lista.Adicionar(new ContaCorrente(874, 3218392));
             lista.Adicionar(new ContaCorrente(874, 5672312));
-            lista.Adicionar(new ContaCorrente(874, 5612312));
-            lista.Adicionar(new ContaCorrente(874, 5671412));
-            lista.Adicionar(new ContaCorrente(874, 5152312));
-            lista.Adicionar(new ContaCorrente(874, 5972312));
             lista.Adicionar(new ContaCorrente(874, 5679312));
-            lista.Adicionar(new ContaCorrente(874, 5672319));
+            lista.Adicionar(new ContaCorrente(874, 5992312));
+            lista.Adicionar(new ContaCorrente(874, 5672992));
+            lista.Adicionar(new ContaCorrente(874, 5111312));
+            lista.Adicionar(new ContaCorrente(874, 5672212));
+            lista.Adicionar(new ContaCorrente(874, 5676662));
+            lista.Adicionar(new ContaCorrente(874, 5688882));
+            lista.Adicionar(new ContaCorrente(874, 5682312));
+            lista.Adicionar(new ContaCorrente(874, 5672777));
+            lista.Adicionar(new ContaCorrente(874, 5772312));
+            lista.Adicionar(new ContaCorrente(874, 7772312));
+            lista.Adicionar(new ContaCorrente(874, 5772312));
         }
     }
 }

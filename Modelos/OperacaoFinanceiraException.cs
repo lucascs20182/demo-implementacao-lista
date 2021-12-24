@@ -1,4 +1,4 @@
-﻿namespace Demo.RedefinirTamanhoArray
+﻿namespace Demo.Modelos
 {
     public class OperacaoFinanceiraException : Exception
     {

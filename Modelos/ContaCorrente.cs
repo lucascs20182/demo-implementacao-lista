@@ -1,4 +1,4 @@
-﻿namespace Demo.RedefinirTamanhoArray
+﻿namespace Demo.Modelos
 {
     /// <summary>
     /// Define uma Conta Corrente de um banco.

@@ -1,24 +1,16 @@
+using Demo.Modelos;
+
 namespace Demo.RedefinirTamanhoArray
 {
-    /*
-        Esta é uma implementação de lista que custa bastante processamento
-        na medida em que toda vez que uma nova posição precisar ser adicionada ao array,
-        será necessário percorrer todo o tamanho do array
-
-        Ou seja, para adicionar +1 item numa lista de 1000 itens
-        será necessário percorrer os 1000 itens.
-        Para adicionar +1 será necessário percorrer 1001 itens.
-    */
     public class ListaDeContaCorrente
     {
         private ContaCorrente[] _itens;
         private int _proximaPosicao;
 
-        // ctor: codesnippet para gerar construtores automaticamente
-        public ListaDeContaCorrente()
+        public ListaDeContaCorrente(int capacidadeInicial = 5)
         {
-            _itens = new ContaCorrente[5];
-            _proximaPosicao = 0; // já é por default mas para explicitar...
+            _itens = new ContaCorrente[capacidadeInicial];
+            _proximaPosicao = 0;
         }
 
         public void Adicionar(ContaCorrente item)
@@ -26,29 +18,41 @@ namespace Demo.RedefinirTamanhoArray
             // se verificado que a _proximaPosicao for a última do array
             // "Redefine" a capacidade
             VerificarCapacidade(_proximaPosicao + 1);
+
+            Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
             
             _itens[_proximaPosicao] = item;
-
             _proximaPosicao++;
         }
 
         private void VerificarCapacidade(int tamanhoNecessario)
         {
-            if (_itens.Length >= tamanhoNecessario)
+            if(_itens.Length >= tamanhoNecessario)
             {
                 return;
             }
 
-            _itens = CopiaArray(tamanhoNecessario);
+            int novoTamanho = _itens.Length * 2;
+            
+            // se alguém chamar o método pedindo um tamanho maior que o dobro
+            if (novoTamanho < tamanhoNecessario)
+            {
+                novoTamanho = tamanhoNecessario;
+            }
+
+            _itens = CopiaArray(novoTamanho);
         }
 
-        private ContaCorrente[] CopiaArray(int tamanhoNecessario)
+        private ContaCorrente[] CopiaArray(int novoTamanho)
         {
-            ContaCorrente[] novoArray = new ContaCorrente[tamanhoNecessario];
+            Console.WriteLine("Aumentando capacidade da lista!");
+
+            ContaCorrente[] novoArray = new ContaCorrente[novoTamanho];
 
             for (int indice = 0; indice < _itens.Length; indice++)
             {
                 novoArray[indice] = _itens[indice];
+                // Console.WriteLine("."); // ilustra número de iterações
             }
 
             return novoArray;

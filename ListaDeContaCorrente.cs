@@ -25,6 +25,15 @@ namespace Demo.RedefinirTamanhoArray
             _proximaPosicao++;
         }
 
+        // params faz com que o compilador crie um array com todos parametros
+        public void AdicionarVarios(params ContaCorrente[] itens)
+        {
+            foreach (ContaCorrente item in itens)
+            {
+                Adicionar(item);
+            }
+        }
+
         private void VerificarCapacidade(int tamanhoNecessario)
         {
             if(_itens.Length >= tamanhoNecessario)
@@ -102,16 +111,7 @@ namespace Demo.RedefinirTamanhoArray
             _itens[_proximaPosicao] = null;
         }
 
-        // teste indexador com texto
-        // public ContaCorrente this[string texto]
-        // {
-        //     get
-        //     {
-        //         return null;
-        //     }
-        // }
-
-        public ContaCorrente this[int indice] // indexador
+        public ContaCorrente this[int indice]
         {
             get
             {

@@ -6,11 +6,21 @@ namespace Demo.RedefinirTamanhoArray
     {
         static void Main(string[] args)
         {
-            // ListaDeContaCorrente lista = new ListaDeContaCorrente();
-            ListaDeContaCorrente lista = new ListaDeContaCorrente(20);
+            ListaDeContaCorrente lista = new ListaDeContaCorrente();
 
             ContaCorrente contaParaRemover = new ContaCorrente(111, 1111111);
-            lista.Adicionar(contaParaRemover);
+            
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                contaParaRemover,
+                new ContaCorrente(874, 5758492),
+                new ContaCorrente(847, 2738271)
+            };
+
+            lista.AdicionarVarios(contas);
+            lista.AdicionarVarios(new ContaCorrente(874, 2112758492), new ContaCorrente(874, 1231328492));
+            lista.AdicionarVarios(new ContaCorrente(874, 1215148492));
+            lista.AdicionarVarios(new ContaCorrente[]{new ContaCorrente(874, 32148492)});
 
             lista.Adicionar(new ContaCorrente(874, 5678392));
             lista.Adicionar(new ContaCorrente(874, 3218392));
@@ -30,9 +40,7 @@ namespace Demo.RedefinirTamanhoArray
 
             for (int i = 0; i < lista.Tamanho; i++)
             {
-                // ContaCorrente itemAtual = lista.GetItemNoIndice(i);
-                // ContaCorrente teste = lista["texto"];
-                ContaCorrente itemAtual = lista[i]; // indexador
+                ContaCorrente itemAtual = lista[i];
 
                 Console.WriteLine($"Item na posição {i} = Conta {itemAtual.Numero} / {itemAtual.Agencia}");
             }

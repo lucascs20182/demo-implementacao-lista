@@ -28,10 +28,14 @@ namespace Demo.RedefinirTamanhoArray
             lista.Adicionar(new ContaCorrente(874, 7772312));
             lista.Adicionar(new ContaCorrente(874, 5772312));
 
-            lista.EscreverListaNaTela();
-            lista.Remover(contaParaRemover);
-            Console.WriteLine("Após remover o item");
-            lista.EscreverListaNaTela();
+            for (int i = 0; i < lista.Tamanho; i++)
+            {
+                // ContaCorrente itemAtual = lista.GetItemNoIndice(i);
+                // ContaCorrente teste = lista["texto"];
+                ContaCorrente itemAtual = lista[i]; // indexador
+
+                Console.WriteLine($"Item na posição {i} = Conta {itemAtual.Numero} / {itemAtual.Agencia}");
+            }
         }
     }
 }

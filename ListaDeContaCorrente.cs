@@ -19,7 +19,7 @@ namespace Demo.RedefinirTamanhoArray
             // "Redefine" a capacidade
             VerificarCapacidade(_proximaPosicao + 1);
 
-            Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
+            // Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
             
             _itens[_proximaPosicao] = item;
             _proximaPosicao++;
@@ -45,7 +45,7 @@ namespace Demo.RedefinirTamanhoArray
 
         private ContaCorrente[] CopiaArray(int novoTamanho)
         {
-            Console.WriteLine("Aumentando capacidade da lista!");
+            // Console.WriteLine("Aumentando capacidade da lista!");
 
             ContaCorrente[] novoArray = new ContaCorrente[novoTamanho];
 
@@ -58,13 +58,22 @@ namespace Demo.RedefinirTamanhoArray
             return novoArray;
         }
 
-        public void EscreverListaNaTela()
+        public int Tamanho
         {
-            for (int i = 0; i < _proximaPosicao; i++)
+            get
             {
-                ContaCorrente conta = _itens[i];
-                Console.WriteLine($"Conta no índice {i}: numero {conta.Agencia} {conta.Numero}");
+                return _proximaPosicao;
             }
+        }
+
+        public ContaCorrente GetItemNoIndice(int indice)
+        {
+            if (indice < 0 || indice >= _proximaPosicao)
+            {
+                throw new ArgumentOutOfRangeException(nameof(indice));
+            }
+
+            return _itens[indice];
         }
 
         public void Remover(ContaCorrente item)
@@ -91,6 +100,23 @@ namespace Demo.RedefinirTamanhoArray
 
             #pragma warning disable CS8625
             _itens[_proximaPosicao] = null;
+        }
+
+        // teste indexador com texto
+        // public ContaCorrente this[string texto]
+        // {
+        //     get
+        //     {
+        //         return null;
+        //     }
+        // }
+
+        public ContaCorrente this[int indice] // indexador
+        {
+            get
+            {
+                return GetItemNoIndice(indice);
+            }
         }
     }
 }

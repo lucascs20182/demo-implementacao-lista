@@ -6,7 +6,11 @@ namespace Demo.RedefinirTamanhoArray
     {
         static void Main(string[] args)
         {
-            ListaDeContaCorrente lista = new ListaDeContaCorrente();
+            // ListaDeContaCorrente lista = new ListaDeContaCorrente();
+            ListaDeContaCorrente lista = new ListaDeContaCorrente(20);
+
+            ContaCorrente contaParaRemover = new ContaCorrente(111, 1111111);
+            lista.Adicionar(contaParaRemover);
 
             lista.Adicionar(new ContaCorrente(874, 5678392));
             lista.Adicionar(new ContaCorrente(874, 3218392));
@@ -23,6 +27,11 @@ namespace Demo.RedefinirTamanhoArray
             lista.Adicionar(new ContaCorrente(874, 5772312));
             lista.Adicionar(new ContaCorrente(874, 7772312));
             lista.Adicionar(new ContaCorrente(874, 5772312));
+
+            lista.EscreverListaNaTela();
+            lista.Remover(contaParaRemover);
+            Console.WriteLine("Após remover o item");
+            lista.EscreverListaNaTela();
         }
     }
 }

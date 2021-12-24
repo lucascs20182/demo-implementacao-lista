@@ -57,5 +57,40 @@ namespace Demo.RedefinirTamanhoArray
 
             return novoArray;
         }
+
+        public void EscreverListaNaTela()
+        {
+            for (int i = 0; i < _proximaPosicao; i++)
+            {
+                ContaCorrente conta = _itens[i];
+                Console.WriteLine($"Conta no índice {i}: numero {conta.Agencia} {conta.Numero}");
+            }
+        }
+
+        public void Remover(ContaCorrente item)
+        {
+            int indiceItem = -1;
+
+            for (int i = 0; i < _proximaPosicao; i++)
+            {
+                ContaCorrente itemAtual = _itens[i];
+                
+                if (itemAtual.Equals(item))
+                {
+                    indiceItem = i;
+                    break;
+                }
+            }
+
+            for (int i = indiceItem; i < _proximaPosicao - 1; i++)
+            {
+                _itens[i] = _itens[i + 1];
+            }
+
+            _proximaPosicao--;
+
+            #pragma warning disable CS8625
+            _itens[_proximaPosicao] = null;
+        }
     }
 }

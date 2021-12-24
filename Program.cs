@@ -1,6 +1,4 @@
-﻿using Demo.Modelos;
-
-namespace Demo.RedefinirTamanhoArray
+﻿namespace Demo.RedefinirTamanhoArray
 {
     class Program
     {

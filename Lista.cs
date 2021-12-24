@@ -1,19 +1,17 @@
-using Demo.Modelos;
-
 namespace Demo.RedefinirTamanhoArray
 {
-    public class ListaDeContaCorrente
+    public class Lista<T>
     {
-        private ContaCorrente[] _itens;
+        private T[] _itens;
         private int _proximaPosicao;
 
-        public ListaDeContaCorrente(int capacidadeInicial = 5)
+        public Lista(int capacidadeInicial = 5)
         {
-            _itens = new ContaCorrente[capacidadeInicial];
+            _itens = new T[capacidadeInicial];
             _proximaPosicao = 0;
         }
 
-        public void Adicionar(ContaCorrente item)
+        public void Adicionar(T item)
         {
             // se verificado que a _proximaPosicao for a última do array
             // "Redefine" a capacidade
@@ -25,10 +23,9 @@ namespace Demo.RedefinirTamanhoArray
             _proximaPosicao++;
         }
 
-        // params faz com que o compilador crie um array com todos parametros
-        public void AdicionarVarios(params ContaCorrente[] itens)
+        public void AdicionarVarios(params T[] itens)
         {
-            foreach (ContaCorrente item in itens)
+            foreach (T item in itens)
             {
                 Adicionar(item);
             }
@@ -52,11 +49,11 @@ namespace Demo.RedefinirTamanhoArray
             _itens = CopiaArray(novoTamanho);
         }
 
-        private ContaCorrente[] CopiaArray(int novoTamanho)
+        private T[] CopiaArray(int novoTamanho)
         {
             // Console.WriteLine("Aumentando capacidade da lista!");
 
-            ContaCorrente[] novoArray = new ContaCorrente[novoTamanho];
+            T[] novoArray = new T[novoTamanho];
 
             for (int indice = 0; indice < _itens.Length; indice++)
             {
@@ -75,7 +72,7 @@ namespace Demo.RedefinirTamanhoArray
             }
         }
 
-        public ContaCorrente GetItemNoIndice(int indice)
+        public T GetItemNoIndice(int indice)
         {
             if (indice < 0 || indice >= _proximaPosicao)
             {
@@ -85,14 +82,15 @@ namespace Demo.RedefinirTamanhoArray
             return _itens[indice];
         }
 
-        public void Remover(ContaCorrente item)
+        public void Remover(T item)
         {
             int indiceItem = -1;
 
             for (int i = 0; i < _proximaPosicao; i++)
             {
-                ContaCorrente itemAtual = _itens[i];
+                T itemAtual = _itens[i];
                 
+                #pragma warning disable CS8602
                 if (itemAtual.Equals(item))
                 {
                     indiceItem = i;
@@ -106,12 +104,9 @@ namespace Demo.RedefinirTamanhoArray
             }
 
             _proximaPosicao--;
-
-            #pragma warning disable CS8625
-            _itens[_proximaPosicao] = null;
         }
 
-        public ContaCorrente this[int indice]
+        public T this[int indice]
         {
             get
             {
